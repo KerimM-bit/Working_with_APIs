@@ -1,0 +1,11 @@
+SELECT * FROM wstations;
+
+
+-- First we are converting to "::float" because some places are missing temperature values
+-- in the end we add "::numeric" to round decimal places to 2. 
+
+SELECT id, name, "temperature(kelvin)",
+round(("temperature(kelvin)" ::float - 273.15)::numeric,2)
+AS temperature_in_celcius
+FROM wstations;
+ 
